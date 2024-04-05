@@ -1,0 +1,24 @@
+{
+    "build": {
+        "php": "8.2",
+        "run_npm": "true",
+        "npm_run_command": "npm run build"
+    },
+
+    "image": {
+        "name": "uadevelopment/php",
+        "tag": "8.2-latest",
+        "databases": ["oracle"],
+        "os_modules": ["php82-pdo_sqlite"],
+        "php_extensions": [],
+        "max_file_size": "20",
+        "timeout": "60"
+    },
+
+    "server": {
+        "ingress": "true",
+        "pv": "false",
+        "queue": "false",
+        "cron": []
+    }
+}
