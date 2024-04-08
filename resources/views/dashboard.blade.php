@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Listings') }}
         </h2>
     </x-slot>
 
@@ -51,7 +51,12 @@
                                                     <tbody class="divide-y divide-gray-800">
                                                         <tr>
                                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">13259834</td>
-                                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Synth Wave</td>
+                                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Synth Wave
+                                                                <p class="mt-3"><audio controls>
+                                                                    <source src="{{ asset('records/synth-beat.mp3')}}" type="audio/mpeg">
+                                                                  Your browser does not support the audio element.
+                                                                  </audio></p>
+                                                            </td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">144</td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">03/18/2024</td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sultry</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sexy</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Bumpin</a></span></td>
@@ -62,7 +67,11 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">13259834</td>
-                                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Synth Wave</td>
+                                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Synth Wave
+                                                                <p class="mt-3"><audio controls>
+                                                                <source src="{{ asset('records/synth-beat.mp3')}}" type="audio/mpeg">
+                                                              Your browser does not support the audio element.
+                                                              </audio></p></td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">144</td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">03/18/2024</td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sultry</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sexy</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Bumpin</a></span></td>
@@ -73,7 +82,11 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">13259834</td>
-                                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Synth Wave</td>
+                                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Synth Wave
+                                                                <p class="mt-3"><audio controls>
+                                                                <source src="{{ asset('records/synth-beat.mp3')}}" type="audio/mpeg">
+                                                              Your browser does not support the audio element.
+                                                              </audio></p></td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">144</td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">03/18/2024</td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sultry</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sexy</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Bumpin</a></span></td>
@@ -84,7 +97,11 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">13259834</td>
-                                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Synth Wave</td>
+                                                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">Synth Wave
+                                                                <p class="mt-3"><audio controls>
+                                                                <source src="{{ asset('records/synth-beat.mp3')}}" type="audio/mpeg">
+                                                              Your browser does not support the audio element.
+                                                              </audio></p></td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">144</td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">03/18/2024</td>
                                                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sultry</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sexy</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Bumpin</a></span></td>
