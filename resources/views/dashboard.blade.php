@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     Hello {{ substr(auth()->user()->name,0,strpos(auth()->user()->name," ")) }}!<p class="mt-3">Let's get some music sold!
-                    <p>
+</p>
                 </div>
 
             </div>

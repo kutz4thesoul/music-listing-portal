@@ -99,8 +99,10 @@
                 $(section).find(':input').attr('data-parsley-group', 'block-' + index);
             });
 
-            navigateTo(0);
-        });
+                if ($sections.length > 0) {
+                    navigateTo(0);
+                }
+            });
     </script>
 <!-- End Temporary for multi-step form -->
 </body>
