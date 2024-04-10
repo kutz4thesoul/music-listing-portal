@@ -9,7 +9,7 @@
         <div class="grid grid-cols-2 gap-4">
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">UID</label>
-            <p class="text-lg">{{ $item->UID }}</p>
+            <p class="text-lg">{{ $record->UID }}</p>
           </div>
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">Service</label>
@@ -17,35 +17,35 @@
           </div>
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">Title</label>
-            <p class="text-lg">{{ $item->title }}</p>
+            <p class="text-lg">{{ $record->title }}</p>
           </div>
           <div class="mb-4 col-span-2">
             <label class="block text-sm font-medium mb-2">Audio File</label>
             <!-- You can customize the display of audio file here -->
             <audio controls class="w-full">
-              <source src="{{ $item->audio_file }}" type="audio/mpeg">
+              <source src="{{ asset("records/$record->audio_file") }}" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
           </div>
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">BPM</label>
-            <p class="text-lg">{{ $item->bpm }}</p>
+            <p class="text-lg">{{ $record->bpm }}</p>
           </div>
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">Listing Date</label>
-            <p class="text-lg">{{ $item->listing_date }}</p>
+            <p class="text-lg">{{ $record->listing_date }}</p>
           </div>
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">Price</label>
-            <p class="text-lg">${{ $item->price }}</p>
+            <p class="text-lg">${{ $record->price }}</p>
           </div>
           <div class="mb-4">
             <label class="block text-sm font-medium mb-2">Is Exclusive</label>
-            <p class="text-lg">{{ $item->is_exclusive ? 'Yes' : 'No' }}</p>
+            <p class="text-lg">{{ $record->is_exclusive ? 'Yes' : 'No' }}</p>
           </div>
           <div class="mb-4 col-span-2">
             <label class="block text-sm font-medium mb-2">Notes</label>
-            <p class="text-lg">{{ $item->notes }}</p>
+            <p class="text-lg">{{ $record->notes }}</p>
           </div>
         </div>
       </div>
