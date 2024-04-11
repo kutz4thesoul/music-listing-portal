@@ -19,6 +19,13 @@ class RecordController extends Controller
                 $tags[] = substr($key, 4);
             }
         }
+
+        // Extract library ID's from the request
+        foreach ($request->all() as $key => $value) {
+            if (strpos($key, 'library_') === 0) {
+                $libraries[] = substr($key, 8);
+            }
+        }
         
         // validate form fields
         $request->validate([
@@ -49,10 +56,13 @@ class RecordController extends Controller
         // save the record
         $record->save();
 
-        // attach tags to the record
+        // attach tags and libraries to the record
         $record->tags()->attach($tags);
 
-        // Do we want to go here or to the dashboard?
+        // TODO: I'm not ready to do this yet because I don't have the form setup for Libraries yet.
+        // $record->libraries()->attach($libraries);
+
+        // TODO: Do we want to go here or to the dashboard?
         return redirect()->route('detail', ['id' => $record->id]);
 
     }

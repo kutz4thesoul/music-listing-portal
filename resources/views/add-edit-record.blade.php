@@ -70,6 +70,7 @@
                     <h2 class="text-xl">Mood</h2>
                         <div class="grid grid-cols-3 gap-4 dark:bg-gray-800 p-4">
                             @php
+                            // TODO: This is a placeholder for the list of moods that will be used to be imported later
                             $items = explode(',', 'achievement,angry,anxious,aggressive,big,bouncy,bright,calm,casual,every day,chaotic,cheerful/happy,confident,confused,contemplative,cool,dark,determined,down,melancholic,discovery,disturbing,dramatic,dreamy,driving,easy,eerie,elegant,energetic,epic,erotic,ethereal,evil,festive,frantic,fun,funny,funky,futuristic,groovy,happy,hard,haunting,heavy,high tech,hopeful,hypnotic,industrial,inspirational,motivational,intense,joyful,light,lively,magical,mechanical,meditative,melancholy,mellow,mournful,mystical,nature,ominous,foreboding,optimistic,passionate,patriotic,peaceful,playful,poignant,pompous,powerful,positive,proud,quiet,reflective,regal,relaxed,repetitive,romantic,sad,scary,searching,sensual,sentimental,serene,sexy,sultry,sincere,smooth,soft,soothing,southern,strange,suspense,sweet,tension,terror,tranquil,travel,uplifting,urban,video game,wholesome');
                             @endphp
 
