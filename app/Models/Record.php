@@ -21,10 +21,10 @@ class Record extends Model
     ];
 
     public function tags() {
-        return $this->belongsToMany(Tag::class, 'record_id');
+        return $this->belongsToMany(Tag::class, 'record_tag');
     }
 
     public function libraries() {
-        return $this->belongsToMany(Library::class, 'record_id');
+        return $this->belongsToMany(Library::class, 'record_library');
     }
 }

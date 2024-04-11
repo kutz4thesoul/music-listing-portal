@@ -10,10 +10,10 @@ use App\Livewire\Forms\TagCreateForm;
 class TagCreate extends Component
 {
 
-    #[Validate('required')]
+    #[Validate('required|unique:tags,name|min:3')]
     public $name = '';
 
-    #[Validate('required')]
+    #[Validate('required|unique:tags,slug|min:3')]
     public $slug = '';
 
     public function store() {
@@ -22,14 +22,13 @@ class TagCreate extends Component
 
         $tag = new Tag();
         $tag->name = strtolower($this->name);
-        $tag->slug = $this->slug;
+        $tag->slug = str_replace(' ','-',strtolower($this->slug));
         $tag->save();
 
         $this->name = '';
         $this->slug = '';
 
-        session()->flash('message', 'Tag created successfully.');
-
+        session()->flash('message', 'Tag successfully created.');
 
     }
 

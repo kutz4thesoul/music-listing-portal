@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tag;
 use App\Models\Record;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecordController;
@@ -18,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/add-edit-record', function() {
-        return view('add-edit-record');
+        return view('add-edit-record', ['tags' => Tag::all()]);
     })->name('add-edit-record');
     Route::post('/save-record', [RecordController::class, 'store'])->name('save-record');
     Route::get('/detail/{id}', [RecordController::class, 'show'])->name('detail');

@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Storage;
 class RecordController extends Controller
 {
     public function store(Request $request) {
+
+        $tags       = [];
+        $libraries  = [];
+
+        // Extract tag ID's from the request
+        foreach ($request->all() as $key => $value) {
+            if (strpos($key, 'tag_') === 0) {
+                $tags[] = substr($key, 4);
+            }
+        }
         
         // validate form fields
         $request->validate([
@@ -38,6 +48,9 @@ class RecordController extends Controller
 
         // save the record
         $record->save();
+
+        // attach tags to the record
+        $record->tags()->attach($tags);
 
         // Do we want to go here or to the dashboard?
         return redirect()->route('detail', ['id' => $record->id]);
