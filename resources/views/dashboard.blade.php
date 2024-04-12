@@ -41,7 +41,7 @@
                                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Title</th>
                                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">BPM</th>
                                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Listing Date</th>
-                                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Tags</th>
+                                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Moods</th>
                                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Libraries</th>
                                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Instruments</th>
                                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Eras</th>
@@ -54,9 +54,9 @@
                                                         @foreach ($records as $record)
                                                             <tr>
                                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{ $record->UID }}</td>
-                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ $record->title }}
+                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><a href="{{ route('detail', ['id' => $record->id]) }}" class="text-indigo-400 hover:text-indigo-300">{{ $record->title }}</a>
                                                                     <p class="mt-3"><audio controls>
-                                                                        <source src="{{ asset("records/$record->audio_file")}}" type="audio/mpeg">
+                                                                        <source src="{{ asset("records/$record->audio_file") }}" type="audio/mpeg">
                                                                     Your browser does not support the audio element.
                                                                     </audio></p>
                                                                 </td>

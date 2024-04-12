@@ -104,7 +104,7 @@ class RecordController extends Controller
 
     }
 
-    public function show() {
+    public function showbyId() {
         $id = request('id');
         $record = Record::findOrFail($id);
         return view("detail", ['record' => $record]);

@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/save-record', [RecordController::class, 'store'])->name('save-record');
     Route::put('/save-record/{id}', [RecordController::class, 'store'])->name('update-record');
     Route::get('/delete-record/{id}', [RecordController::class, 'destroy'])->name('delete-record');
-    Route::get('/detail/{id}', [RecordController::class, 'show'])->name('detail');
+    Route::get('/detail/{id}', [RecordController::class, 'showById'])->name('detail');
     Route::get('/admin', function() {
         return view('admin');
     })->name('admin');
