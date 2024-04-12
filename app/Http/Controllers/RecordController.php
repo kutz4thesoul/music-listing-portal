@@ -10,8 +10,10 @@ class RecordController extends Controller
 {
     public function store(Request $request) {
 
-        $tags       = [];
-        $libraries  = [];
+        $tags        = [];
+        $libraries   = [];
+        $instruments = [];
+        $eras        = [];
 
         // Extract tag ID's from the request
         foreach ($request->all() as $key => $value) {
@@ -26,7 +28,23 @@ class RecordController extends Controller
                 $libraries[] = substr($key, 8);
             }
         }
+
+        // Extract instrument ID's from the request
+        foreach ($request->all() as $key => $value) {
+            if (strpos($key, 'instrument_') === 0) {
+                $instruments[] = substr($key, 11);
+            }
+        }
+
+        // Extract era ID's from the request
+        foreach ($request->all() as $key => $value) {
+            if (strpos($key, 'era_') === 0) {
+                $eras[] = substr($key, 4);
+            }
+        }
+
         
+        // TODO: Do I need to do this since I'm using parsley.js to validate the step form?
         // validate form fields
         $request->validate([
             'title' => 'required',
@@ -59,8 +77,14 @@ class RecordController extends Controller
         // attach tags and libraries to the record
         $record->tags()->attach($tags);
 
-        // TODO: I'm not ready to do this yet because I don't have the form setup for Libraries yet.
-        // $record->libraries()->attach($libraries);
+        // attach libraries to the record
+        $record->libraries()->attach($libraries);
+
+        // attach instruments to the record
+        $record->instruments()->attach($instruments);
+
+        // attach eras to the record
+        $record->eras()->attach($eras);
 
         // TODO: Do we want to go here or to the dashboard?
         return redirect()->route('detail', ['id' => $record->id]);

@@ -27,4 +27,12 @@ class Record extends Model
     public function libraries() {
         return $this->belongsToMany(Library::class, 'record_library');
     }
+
+    public function instruments() {
+        return $this->belongsToMany(Instrument::class, 'record_instrument');
+    }
+
+    public function eras() {
+        return $this->belongsToMany(Era::class, 'record_era');
+    }
 }

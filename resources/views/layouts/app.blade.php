@@ -72,6 +72,7 @@
                 $('.form-navigation [type=submit]').toggle(atTheEnd);
 
 
+                // FIXME: When you go back a step the current step is not highlighted
                 const step= document.querySelector('.step'+index);
                 step.style.backgroundColor = 'green';
                 step.style.color = 'white';

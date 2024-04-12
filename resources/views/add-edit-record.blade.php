@@ -6,8 +6,11 @@
                 <h2 class="text-2xl font-bold mb-4">Add/Edit New Record</h2>
 
                 <div class="flex justify-between text-center mb-10">
-                    <label class="step0 basis-1/2 border-solid border-2 border-gray-600 p-4">Step One</label>
-                    <label class="step1 basis-1/2 border-solid border-2 border-gray-600 p-4">Step Two</label>
+                    <label class="step0 basis-1/5 border-solid border-2 border-gray-600 p-4">Step One</label>
+                    <label class="step1 basis-1/5 border-solid border-2 border-gray-600 p-4">Step Two</label>
+                    <label class="step2 basis-1/5 border-solid border-2 border-gray-600 p-4">Step Three</label>
+                    <label class="step3 basis-1/5 border-solid border-2 border-gray-600 p-4">Step Four</label>
+                    <label class="step4 basis-1/5 border-solid border-2 border-gray-600 p-4">Step Five</label>
                 </div>
 
                 <form class="new-listing-form" method="POST" action="{{ route('save-record') }}" enctype="multipart/form-data">
@@ -73,6 +76,39 @@
                             <label class="flex items-center text-gray-700 dark:text-gray-400">
                                 <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 dark:text-indigo-400" name="tag_{{ $tag->id }}">
                                 <span class="ml-2">{{ $tag->name }}</span>
+                            </label>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="form-section">
+                    <h2 class="text-xl">Instruments</h2>
+                        <div class="grid grid-cols-3 gap-4 dark:bg-gray-800 p-4">
+                            @foreach ($instruments as $instrument)
+                            <label class="flex items-center text-gray-700 dark:text-gray-400">
+                                <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 dark:text-indigo-400" name="instrument_{{ $instrument->id }}">
+                                <span class="ml-2">{{ $instrument->name }}</span>
+                            </label>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="form-section">
+                    <h2 class="text-xl">Libraries</h2>
+                        <div class="grid grid-cols-3 gap-4 dark:bg-gray-800 p-4">
+                            @foreach ($libraries as $library)
+                            <label class="flex items-center text-gray-700 dark:text-gray-400">
+                                <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 dark:text-indigo-400" name="library_{{ $library->id }}">
+                                <span class="ml-2">{{ $library->name }}</span>
+                            </label>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="form-section">
+                    <h2 class="text-xl">Eras</h2>
+                        <div class="grid grid-cols-3 gap-4 dark:bg-gray-800 p-4">
+                            @foreach ($eras as $era)
+                            <label class="flex items-center text-gray-700 dark:text-gray-400">
+                                <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 dark:text-indigo-400" name="era_{{ $era->id }}">
+                                <span class="ml-2">{{ $era->name }}</span>
                             </label>
                             @endforeach
                         </div>
