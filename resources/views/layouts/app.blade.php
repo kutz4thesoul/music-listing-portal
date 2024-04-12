@@ -56,6 +56,9 @@
 <!-- Temporary for multi-step form -->
 
     <script>
+
+        // TODO: Add functionality that auto-populates the slug fields based on the title field (eras, libraries, instruments, and tags)
+
         $(function() {
             var $sections = $('.form-section');
 
@@ -72,10 +75,11 @@
                 $('.form-navigation [type=submit]').toggle(atTheEnd);
 
 
-                // FIXME: When you go back a step the current step is not highlighted
                 const step= document.querySelector('.step'+index);
                 step.style.backgroundColor = 'green';
                 step.style.color = 'white';
+                const nextStep = document.querySelector('.step'+(index+1));
+                nextStep.style.backgroundColor = 'unset';
 
             }
 

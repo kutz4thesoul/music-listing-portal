@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Era;
+use App\Models\Tag;
 use App\Models\Record;
+use App\Models\Library;
+use App\Models\Instrument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class RecordController extends Controller
 {
-    public function store(Request $request) {
+    public function store(Request $request, $id = null) {
 
         $tags        = [];
         $libraries   = [];
@@ -54,14 +58,23 @@ class RecordController extends Controller
             'audio_file' => 'required|file|mimes:mp3'
         ]);
 
+        // TODO: What to do when the filename is the same as an existing file?
         // store audio file
         $audio_file = $request->file('audio_file');
         if ($audio_file->isValid()) {
             $audio_file->storeAs('records', strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName())));
         }
 
-        // create a new record
-        $record = new Record();
+        // create or update the record
+        if ($id) {
+            $record = Record::findOrFail($id);
+            $record->tags()->detach();
+            $record->libraries()->detach();
+            $record->instruments()->detach();
+            $record->eras()->detach();
+        } else {
+            $record = new Record();
+        }
         $record->title = $request->title;
         $record->bpm = $request->bpm;
         $record->listing_date = $request->listing_date;
@@ -95,5 +108,21 @@ class RecordController extends Controller
         $id = request('id');
         $record = Record::findOrFail($id);
         return view("detail", ['record' => $record]);
+    }
+
+    public function addEditRecord($id = null) {
+
+        if ($id) {
+            $record = Record::with('tags', 'libraries', 'instruments', 'eras')->findOrFail($id);
+            return view('add-edit-record', ['record' => $record, 'tags' => Tag::all(), 'libraries' => Library::all(), 'instruments' => Instrument::all(), 'eras' => Era::all()]);
+        } else {
+            return view('add-edit-record', ['tags' => Tag::all(), 'libraries' => Library::all(), 'instruments' => Instrument::all(), 'eras' => Era::all()]);
+        }
+    }
+
+    public function destroy($id) {
+        $record = Record::findOrFail($id);
+        $record->delete();
+        return redirect()->route('dashboard');
     }
 }

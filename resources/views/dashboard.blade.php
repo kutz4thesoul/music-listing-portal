@@ -28,7 +28,7 @@
                                             <p class="mt-2 text-sm text-gray-300">A list of all the records you've submitted and their sales data.</p><p class="text-sm text-gray-500">Sales data is updated manually and may not reflect the current sales.</p>
                                         </div>
                                         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                                            <a href="{{ route('add-edit-record') }}" class="block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Add record</a>
+                                            <a href="{{ route('add-record') }}" class="block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Add record</a>
                                         </div>
                                     </div>
                                     <div class="mt-8 flow-root">
@@ -41,8 +41,10 @@
                                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Title</th>
                                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">BPM</th>
                                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Listing Date</th>
-                                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Tag(s)</th>
-                                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Service(s)</th>
+                                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Tags</th>
+                                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Libraries</th>
+                                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Instruments</th>
+                                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Eras</th>
                                                             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
                                                                 <span class="sr-only">Edit</span>
                                                             </th>
@@ -60,10 +62,28 @@
                                                                 </td>
                                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ $record->bpm }}</td>
                                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ $record->listing_date }}</td>
-                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sultry</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Sexy</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">Bumpin</a></span></td>
-                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300"><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="https://audiojungle.net/" target="_blank">Audio Jungle</a></span><span class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="https://www.pond5.com" target="_blank">Pond5</a></span></td>
+                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300 align-top">
+                                                                    @foreach ($record->tags as $tag)
+                                                                    <div class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#">{{ $tag->name }}</a></div>
+                                                                    @endforeach
+                                                                </td>
+                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300 align-top">
+                                                                    @foreach ($record->libraries as $library)
+                                                                    <div class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="{{ $library->url }}" target="_blank">{{ $library->name }}</a></div>
+                                                                    @endforeach
+                                                                </td>
+                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300 align-top">
+                                                                    @foreach ($record->instruments as $instrument)
+                                                                    <div class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#" target="_blank">{{ $instrument->name }}</a></div>
+                                                                    @endforeach
+                                                                </td>
+                                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300 align-top">
+                                                                    @foreach ($record->eras as $era)
+                                                                    <div class="bg-gray-400 text-black p-1 rounded-lg m-1"><a href="#" target="_blank">{{ $era->name }}</a></div>
+                                                                    @endforeach
+                                                                </td>
                                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                                                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Edit<span class="sr-only">, Lindsay Walton</span></a>
+                                                                    <a href="{{ route('edit-record', ['id' => $record->id]) }}" class="text-indigo-400 hover:text-indigo-300">Edit<span class="sr-only">, Lindsay Walton</span></a>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
