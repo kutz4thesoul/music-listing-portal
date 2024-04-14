@@ -15,6 +15,6 @@ class Era extends Model
     ];
 
     public function records() {
-        return $this->belongsToMany(Record::class, 'era_id');
+        return $this->belongsToMany(Record::class, 'record_era');
     }
 }

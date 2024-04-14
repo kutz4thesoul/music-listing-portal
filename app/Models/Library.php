@@ -16,6 +16,6 @@ class Library extends Model
     ];
 
     public function records() {
-        return $this->hasMany(Record::class, 'library_id');
+        return $this->hasMany(Record::class, 'record_library');
     }
 }

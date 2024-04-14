@@ -58,13 +58,6 @@ class RecordController extends Controller
             'audio_file' => 'required|file|mimes:mp3'
         ]);
 
-        // TODO: What to do when the filename is the same as an existing file?
-        // store audio file
-        $audio_file = $request->file('audio_file');
-        if ($audio_file->isValid()) {
-            $audio_file->storeAs('records', strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName())));
-        }
-
         // create or update the record
         if ($id) {
             $record = Record::findOrFail($id);
@@ -75,6 +68,7 @@ class RecordController extends Controller
         } else {
             $record = new Record();
         }
+        $audio_file = $request->file('audio_file');
         $record->title = $request->title;
         $record->bpm = $request->bpm;
         $record->listing_date = $request->listing_date;
@@ -83,6 +77,12 @@ class RecordController extends Controller
         $record->is_exclusive = ( 'on' == $request->is_exclusive ) ? 1 : 0;
         $record->audio_file = strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName()));
         $record->notes = $request->notes;
+
+        // TODO: What to do when the filename is the same as an existing file?
+        // store audio file
+        if ($audio_file->isValid()) {
+            $audio_file->storeAs('records', strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName())));
+        }
 
         // save the record
         $record->save();
@@ -106,7 +106,7 @@ class RecordController extends Controller
 
     public function showbyId() {
         $id = request('id');
-        $record = Record::findOrFail($id);
+        $record = Record::with('tags', 'libraries', 'instruments', 'eras')->findOrFail($id);
         return view("detail", ['record' => $record]);
     }
 
@@ -123,6 +123,9 @@ class RecordController extends Controller
     public function destroy($id) {
         $record = Record::findOrFail($id);
         $record->delete();
+
+        // delete the audio file
+        Storage::delete('records/' . $record->audio_file);
         return redirect()->route('dashboard');
     }
 }

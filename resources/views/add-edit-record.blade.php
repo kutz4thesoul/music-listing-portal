@@ -2,7 +2,7 @@
     <div class="mt-12 max-w-7xl mx-auto bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-4">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-4">
 
-            <div class="bg-gray-800 text-white p-8 rounded-lg shadow-md">
+            <div class="bg-white dark:bg-gray-800  text-gray-900 dark:text-gray-100 p-8 rounded-lg shadow-md">
                 <h2 class="text-2xl font-bold mb-4">Add/Edit New Record</h2>
 
                 <div class="flex justify-between text-center mb-10">

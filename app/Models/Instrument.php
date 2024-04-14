@@ -15,6 +15,6 @@ class Instrument extends Model
     ];
 
     public function records() {
-        return $this->belongsToMany(Record::class, 'instrument_id');
+        return $this->belongsToMany(Record::class, 'record_instrument');
     }
 }

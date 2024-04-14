@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Models\Tag;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
-use App\Livewire\Forms\TagCreateForm;
 
 class TagCreate extends Component
 {

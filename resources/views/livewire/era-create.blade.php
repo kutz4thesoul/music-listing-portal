@@ -1,5 +1,5 @@
 <div>
-    <h2 class="text-xl">Add Tag</h2>
+    <h2 class="text-xl">Add Era</h2>
     <form wire:submit="store" class="bg-white dark:bg-gray-800 p-6 rounded-lg">
         @csrf
 

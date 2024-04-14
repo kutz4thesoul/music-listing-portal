@@ -15,6 +15,6 @@ class Tag extends Model
     ];
 
     public function records() {
-        return $this->belongsToMany(Record::class, 'tag_id');
+        return $this->belongsToMany(Record::class, 'record_tag');
     }
 }
