@@ -29,8 +29,11 @@
     <!-- End Temporary for multi-step form -->
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
+        integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -40,11 +43,11 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-        <header class="bg-white dark:bg-gray-800 shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
+            <header class="bg-white dark:bg-gray-800 shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
         @endif
 
         <!-- Page Content -->
@@ -52,11 +55,10 @@
             {{ $slot }}
         </main>
     </div>
-    
-<!-- Temporary for multi-step form -->
+
+    <!-- Temporary for multi-step form -->
 
     <script>
-
         // TODO: Add functionality that auto-populates the slug fields based on the title field (eras, libraries, instruments, and tags)
 
         $(function() {
@@ -75,10 +77,10 @@
                 $('.form-navigation [type=submit]').toggle(atTheEnd);
 
 
-                const step= document.querySelector('.step'+index);
+                const step = document.querySelector('.step' + index);
                 step.style.backgroundColor = 'green';
                 step.style.color = 'white';
-                const nextStep = document.querySelector('.step'+(index+1));
+                const nextStep = document.querySelector('.step' + (index + 1));
                 nextStep.style.backgroundColor = 'unset';
 
             }
@@ -104,88 +106,89 @@
                 $(section).find(':input').attr('data-parsley-group', 'block-' + index);
             });
 
-                if ($sections.length > 0) {
-                    navigateTo(0);
-                }
-            });
+            if ($sections.length > 0) {
+                navigateTo(0);
+            }
+        });
     </script>
-<!-- End Temporary for multi-step form -->
+    <!-- End Temporary for multi-step form -->
 
-        <!-- TEMP JavaScript to handle tab switching -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const tabs = document.querySelectorAll('[name="tab"]');
-                const tabLabels = document.querySelectorAll('label[for^="tab"]');
-                const tabContentItems = document.querySelectorAll('.tab-content-item');
+    <!-- TEMP JavaScript to handle tab switching -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('[name="tab"]');
+            const tabLabels = document.querySelectorAll('label[for^="tab"]');
+            const tabContentItems = document.querySelectorAll('.tab-content-item');
 
-                // initialize labels
-                tabLabels.forEach(label => {
-                    // if the label is for tab1 then add the dark:bg-gray-600 class
-                    if (label.htmlFor === 'tab1') {
-                        label.classList.add('dark:bg-gray-600');
-                label.classList.add('bg-gray-200');
+            // initialize labels
+            tabLabels.forEach(label => {
+                // if the label is for tab1 then add the dark:bg-gray-600 class
+                if (label.htmlFor === 'tab1') {
+                    label.classList.add('dark:bg-gray-600');
+                    label.classList.add('bg-gray-200');
 
-                    } else {
-                        label.classList.add('dark:bg-gray-700');
-                label.classList.add('bg-gray-100');
+                } else {
+                    label.classList.add('dark:bg-gray-700');
+                    label.classList.add('bg-gray-100');
 
 
+                }
+
+
+                // Handle keyboard navigation
+                label.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        this.click();
                     }
                 });
 
-                tabs.forEach(tab => {
-    tab.addEventListener('change', function() {
-        const selectedTabContent = document.querySelector(`#${this.id}-content`);
-
-        // Hide all tab content
-        tabContentItems.forEach(item => {
-            item.classList.add('hidden');
-        });
-
-        // show the selected tab content
-        selectedTabContent.classList.remove('hidden');
-
-        // Reset classes for all labels
-        tabLabels.forEach(label => {
-            if (label.htmlFor === this.id) {
-                label.classList.remove('dark:bg-gray-700');
-                label.classList.add('dark:bg-gray-600');
-                label.classList.remove('border');
-                label.classList.add('bg-gray-200');
-                label.classList.remove('bg-gray-100');
-            } else {
-                label.classList.remove('dark:bg-gray-600');
-                label.classList.add('dark:bg-gray-700');
-                label.classList.add('dark:border-gray-800');
-                label.classList.add('border');
-                label.classList.add('bg-gray-100');
-                label.classList.remove('bg-gray-200');
-
-            }
-        });
-    });
-
-    // Handle keyboard navigation
-    tab.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            this.click();
-        }
-    });
-
-    // Add focus styles
-    tab.addEventListener('focus', function() {
-        this.classList.add('focus');
-    });
-    tab.addEventListener('blur', function() {
-        this.classList.remove('focus');
-    });
-});
-
+                // Add focus styles
+                label.addEventListener('focus', function() {
+                    this.classList.add('focus');
+                });
+                label.addEventListener('blur', function() {
+                    this.classList.remove('focus');
+                });
             });
-        </script>
 
-        <!-- END TEMP JavaScript to handle tab switching -->
+            tabs.forEach(tab => {
+                tab.addEventListener('change', function() {
+                    const selectedTabContent = document.querySelector(`#${this.id}-content`);
+
+                    // Hide all tab content
+                    tabContentItems.forEach(item => {
+                        item.classList.add('hidden');
+                    });
+
+                    // show the selected tab content
+                    selectedTabContent.classList.remove('hidden');
+
+                    // Reset classes for all labels
+                    tabLabels.forEach(label => {
+                        if (label.htmlFor === this.id) {
+                            label.classList.remove('dark:bg-gray-700');
+                            label.classList.add('dark:bg-gray-600');
+                            label.classList.remove('border');
+                            label.classList.add('bg-gray-200');
+                            label.classList.remove('bg-gray-100');
+                        } else {
+                            label.classList.remove('dark:bg-gray-600');
+                            label.classList.add('dark:bg-gray-700');
+                            label.classList.add('dark:border-gray-800');
+                            label.classList.add('border');
+                            label.classList.add('bg-gray-100');
+                            label.classList.remove('bg-gray-200');
+
+                        }
+                    });
+                });
+            });
+
+        });
+    </script>
+
+    <!-- END TEMP JavaScript to handle tab switching -->
 </body>
 
 </html>

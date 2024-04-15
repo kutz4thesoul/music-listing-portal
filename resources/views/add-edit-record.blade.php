@@ -61,11 +61,25 @@
 
                         </div>
                         <div class="mb-4">
-                            <label for="audio_file" class="block text-sm font-medium mb-2">Audio File</label>
-                            <input type="file" id="audio_file" name="audio_file" value="" class="dark:bg-gray-700 dark:text-white border border-gray-600 rounded-md px-3 py-2 w-full @error('audio_file') border-red-500 @enderror" required>
-                            @error('audio_file')
-                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                            @enderror
+                            @if (!isset($record))
+                                <label for="audio_file" class="block text-sm font-medium mb-2">Audio File</label>
+                                <input type="file" id="audio_file" name="audio_file" value="" class="dark:bg-gray-700 dark:text-white border border-gray-600 rounded-md px-3 py-2 w-full @error('audio_file') border-red-500 @enderror" required>
+                                @error('audio_file')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                                @enderror
+                            @else
+                                <label class="block text-sm font-medium mb-2">Audio File</label>
+                                <!-- You can customize the display of audio file here -->
+                                <audio controls class="w-3/4 inline-block">
+                                    <source src="{{ asset("records/$record->audio_file") }}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                                @if(isset(request()->id))
+                                    <div class="">
+                                        <a href="{{ route('delete-record', ['id' => $record->id]) }}" class="text-red-600">Update Audio File</a>
+                                    </div>
+                                @endif
+                            @endif
                         </div>
                         <div class="mb-4">
                             <label for="notes" class="block text-sm font-medium mb-2">Notes</label>
