@@ -60,6 +60,9 @@
                             <span class="ml-2">Exclusive Listing</span>
 
                         </div>
+
+                        <!-- TODO: START HERE -->
+
                         <div class="mb-4">
                             @if (!isset($record))
                                 <label for="audio_file" class="block text-sm font-medium mb-2">Audio File</label>
@@ -76,11 +79,14 @@
                                 </audio>
                                 @if(isset(request()->id))
                                     <div class="">
-                                        <a href="{{ route('delete-record', ['id' => $record->id]) }}" class="text-red-600">Update Audio File</a>
+                                        <a href="{{ route('remove-file', ['id' => $record->id]) }}" class="text-red-600">Update Audio File</a>
                                     </div>
                                 @endif
                             @endif
                         </div>
+
+
+
                         <div class="mb-4">
                             <label for="notes" class="block text-sm font-medium mb-2">Notes</label>
                             <textarea id="notes" name="notes" class="dark:bg-gray-700 dark:text-white border border-gray-600 rounded-md px-3 py-2 w-full">{{ (isset($record)) ? $record->notes : '' }}</textarea>

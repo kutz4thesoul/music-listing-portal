@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Storage;
 
 class RecordController extends Controller
 {
-    public function store(Request $request, $id = null) {
+    public function store(Request $request, $id = null)
+    {
 
         $tags        = [];
         $libraries   = [];
@@ -47,16 +48,10 @@ class RecordController extends Controller
             }
         }
 
-        
+
         // TODO: Do I need to do this since I'm using parsley.js to validate the step form?
         // validate form fields
-        $request->validate([
-            'title' => 'required',
-            'bpm' => 'required|numeric',
-            'listing_date' => 'required|date',
-            'price' => 'required|numeric',
-            'audio_file' => 'required|file|mimes:mp3'
-        ]);
+        // $request->validate();
 
         // create or update the record
         if ($id) {
@@ -74,15 +69,29 @@ class RecordController extends Controller
         $record->listing_date = $request->listing_date;
         $record->price = $request->price;
         $record->UID = $request->UID;
-        $record->is_exclusive = ( 'on' == $request->is_exclusive ) ? 1 : 0;
-        $record->audio_file = strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName()));
+        $record->is_exclusive = ('on' == $request->is_exclusive) ? 1 : 0;
         $record->notes = $request->notes;
 
-        // TODO: What to do when the filename is the same as an existing file?
         // store audio file
-        if ($audio_file->isValid()) {
-            $audio_file->storeAs('records', strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName())));
+        if ($audio_file) {
+            if ($audio_file->isValid()) {
+
+                // Ensure that we're not overwriting an existing file
+                $fileExists = Storage::exists('records/' . strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName())));
+
+                if (!$fileExists) {
+                    $audio_file->storeAs('records', strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName())));
+                    $record->audio_file = strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName()));
+                } else {
+                    $newFileName = strtolower(str_replace(' ', '-', $audio_file->getClientOriginalName()));
+                    $newFileName = substr($newFileName, 0, -4);
+                    $newFileName = $newFileName . '-' . time() . '.mp3';
+                    $audio_file->storeAs('records', $newFileName);
+                    $record->audio_file = $newFileName;
+                }
+            }
         }
+
 
         // save the record
         $record->save();
@@ -101,16 +110,17 @@ class RecordController extends Controller
 
         // TODO: Do we want to go here or to the dashboard?
         return redirect()->route('detail', ['id' => $record->id]);
-
     }
 
-    public function showbyId() {
+    public function showbyId()
+    {
         $id = request('id');
         $record = Record::with('tags', 'libraries', 'instruments', 'eras')->findOrFail($id);
         return view("detail", ['record' => $record]);
     }
 
-    public function addEditRecord($id = null) {
+    public function addEditRecord($id = null)
+    {
 
         if ($id) {
             $record = Record::with('tags', 'libraries', 'instruments', 'eras')->findOrFail($id);
@@ -120,12 +130,51 @@ class RecordController extends Controller
         }
     }
 
-    public function destroy($id) {
+    public function showByMood($slug)
+    {
+        $tag = Tag::where('slug', $slug)->first();
+        $records = $tag->records()->with('tags', 'libraries', 'instruments', 'eras')->get();
+        return view('dashboard', ['records' => $records, 'tag' => $tag]);
+    }
+
+    public function showByInstrument($slug)
+    {
+        $instrument = Instrument::where('slug', $slug)->first();
+        $records = $instrument->records()->with('tags', 'libraries', 'instruments', 'eras')->get();
+        return view('dashboard', ['records' => $records, 'instrument' => $instrument]);
+    }
+
+    public function showByLibrary($slug)
+    {
+        $library = Library::where('slug', $slug)->first();
+        $records = $library->records()->with('tags', 'libraries', 'instruments', 'eras')->get();
+        return view('dashboard', ['records' => $records, 'library' => $library]);
+    }
+
+    public function showByEra($slug)
+    {
+        $era = Era::where('slug', $slug)->first();
+        $records = $era->records()->with('tags', 'libraries', 'instruments', 'eras')->get();
+        return view('dashboard', ['records' => $records, 'era' => $era]);
+    }
+
+    public function destroy($id)
+    {
         $record = Record::findOrFail($id);
         $record->delete();
 
         // delete the audio file
         Storage::delete('records/' . $record->audio_file);
+
         return redirect()->route('dashboard');
+    }
+
+    public function removeAudioFile($id)
+    {
+        $record = Record::findOrFail($id);
+        Storage::delete('records/' . $record->audio_file);
+        $record->audio_file = null;
+        $record->save();
+        return redirect()->route('edit-record', ['id' => $id]);
     }
 }

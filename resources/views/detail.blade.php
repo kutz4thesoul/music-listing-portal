@@ -91,9 +91,9 @@
             <div class="tab-content p-4 bg-gray-200 dark:bg-gray-600 rounded-r-lg rounded-bl-lg">
                 <!-- Content for Tab 1 -->
                 <div class="tab-content-item" id="tab1-content" role="tabpanel" aria-labelledby="tab1">
-                  <div class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 dark:text-gray-100 align-top flex">
+                  <div class="flex-wrap px-3 py-4 text-sm text-gray-900 dark:text-gray-100 align-top flex">
                     @foreach ($record->tags as $tag)
-                    <div class="bg-gray-600 dark:bg-gray-400 text-white dark:text-black p-1 rounded-lg m-1"><a href="#">{{ ucwords($tag->name) }}</a></div>
+                    <div class="bg-gray-600 dark:bg-gray-400 text-white dark:text-black p-1 rounded-lg m-1"><a href="{{ route('moods',['slug' => $tag->slug]) }}">{{ ucwords($tag->name) }}</a></div>
                     @endforeach
                 </div>
                 </div>
@@ -101,7 +101,7 @@
                 <div class="tab-content-item hidden" id="tab2-content" role="tabpanel" aria-labelledby="tab2">
                   <div class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 dark:text-gray-100 align-top flex">
                     @foreach ($record->instruments as $instrument)
-                    <div class="bg-gray-600 dark:bg-gray-400 text-white dark:text-black p-1 rounded-lg m-1"><a href="#" target="_blank">{{ ucwords($instrument->name) }}</a></div>
+                    <div class="bg-gray-600 dark:bg-gray-400 text-white dark:text-black p-1 rounded-lg m-1"><a href="{{ route('instruments',['slug' => $instrument->slug]) }}" target="_blank">{{ ucwords($instrument->name) }}</a></div>
                     @endforeach
                 </div>
                 </div>
@@ -109,7 +109,7 @@
                 <div class="tab-content-item hidden" id="tab3-content" role="tabpanel" aria-labelledby="tab3">
                   <div class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 dark:text-gray-100 align-top flex">
                     @foreach ($record->libraries as $library)
-                    <div class="bg-gray-600 dark:bg-gray-400 text-white dark:text-black p-1 rounded-lg m-1"><a href="{{ $library->url }}" target="_blank">{{ ucwords($library->name) }}</a></div>
+                    <div class="bg-gray-600 dark:bg-gray-400 text-white dark:text-black p-1 rounded-lg m-1"><a href="{{ route('libraries',['slug' => $library->slug]) }}" target="_blank">{{ ucwords($library->name) }}</a></div>
                     @endforeach
                 </div>
                 </div>
@@ -117,7 +117,7 @@
                 <div class="tab-content-item hidden" id="tab4-content" role="tabpanel" aria-labelledby="tab4">
                   <div class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 dark:text-gray-100 align-top flex">
                     @foreach ($record->eras as $era)
-                    <div class="bg-gray-600 dark:bg-gray-400 text-white dark:text-black p-1 rounded-lg m-1"><a href="#" target="_blank">{{ ucwords($era->name) }}</a></div>
+                    <div class="bg-gray-600 dark:bg-gray-400 text-white dark:text-black p-1 rounded-lg m-1"><a href="{{ route('eras',['slug' => $era->slug]) }}" target="_blank">{{ ucwords($era->name) }}</a></div>
                     @endforeach
                 </div>
               </div>
