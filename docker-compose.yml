@@ -1,17 +1,35 @@
 version: "3.5"
 services:
   app:
+    image: ghcr.io/kutz4thesoul/moodscape-listing-portal:latest
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     networks:
       - appnet
     volumes:
       - ./:/var/www/html
       - ~/.ssh:/home/webuser/.ssh
     ports:
-      - "8080:8080"
+      - "80:80"
     container_name: app
+  mysql:
+    image: mysql:8.3.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    container_name: mysql
+    volumes:
+      - portaldata:/var/lib/mysql
+    networks:
+      - appnet
 networks:
   appnet:
     driver: bridge
+volumes:
+  portaldata:
