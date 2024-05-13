@@ -29,6 +29,8 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, pdo_mysql
           tools: composer, phpunit 
+      - name: Install Composer Dependencies
+        run: composer update --no-interaction --no-suggest
       - name: Clear Laravel Optimization
         run: php artisan optimize:clear
       - name: Optimize Laravel
