@@ -1,0 +1,25 @@
+name: Deploy to Kamatera
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_job:
+    runs-on: ubuntu-latest
+    name: deploy to kamatera
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy File
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          server: ${{ secrets.SFTP_HOST }}
+          port: ${{ secrets.SFTP_PORT }}
+          sftp_only: true
+          local_path: './*'
+          remote_path: '/html'
+          sftpArgs: '-o ConnectTimeout=5'
