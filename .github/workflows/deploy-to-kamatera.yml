@@ -31,5 +31,5 @@ jobs:
             php artisan optimize:clear
             php artisan optimize
           host: ${{ secrets.SFTP_HOST }}
-          user: root
+          user: ${{ secrets.SSH_USERNAME }}
           pass: ${{ secrets.SSH_PASSWORD }}
