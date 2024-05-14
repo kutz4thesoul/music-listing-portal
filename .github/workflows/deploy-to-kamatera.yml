@@ -23,3 +23,13 @@ jobs:
           local_path: './*'
           remote_path: '/html'
           sftpArgs: '-o ConnectTimeout=5'
+      - name: php artisan optimize via ssh
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /var/www/html
+            php artisan optimize:clear
+            php artisan optimize
+          host: ${{ secrets.SFTP_HOST }}
+          user: root
+          pass: ${{ secrets.SSH_PASSWORD }}
