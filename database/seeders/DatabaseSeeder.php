@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
 
         // clear the table before seeding
-        Tag::truncate();
+        // Tag::truncate();
 
         // User::factory(10)->create();
 
@@ -26,9 +26,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // seed the Tag table.
-        Tag::create([
-            'name' => 'Laravel',
-            'slug' => 'laravel',
-        ]);
+        // Tag::create([
+        //     'name' => 'Laravel',
+        //     'slug' => 'laravel',
+        // ]);
     }
 }
