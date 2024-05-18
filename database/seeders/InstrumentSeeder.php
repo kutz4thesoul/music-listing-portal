@@ -13,8 +13,6 @@ class InstrumentSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        Instrument::truncate();
 
         
         $filePath = storage_path('app/public/instrument_slugs.csv'); // Path to your CSV file
