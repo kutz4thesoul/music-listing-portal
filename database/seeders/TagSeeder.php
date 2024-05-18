@@ -15,8 +15,6 @@ class TagSeeder extends Seeder
     public function run(): void
     {
 
-        Tag::truncate();
-
         
         $filePath = storage_path('app/public/mood_slugs.csv'); // Path to your CSV file
         $file = fopen($filePath, 'r');

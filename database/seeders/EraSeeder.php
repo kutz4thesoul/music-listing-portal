@@ -13,7 +13,6 @@ class EraSeeder extends Seeder
      */
     public function run(): void
     {
-        Era::truncate();
 
         
         $filePath = storage_path('app/public/era_slugs.csv'); // Path to your CSV file
