@@ -158,9 +158,4 @@
 
         </div>
     </div>
-    <script>
-        // Handle file removal and replacement.
-
-
-    </script>
 </x-app-layout>
