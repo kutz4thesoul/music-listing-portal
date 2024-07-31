@@ -52,7 +52,7 @@
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: '{{ asset('lottie/tnt-logo-lottie-main.json') }}' // the path to the animation json
+            path: {{ asset('lottie/tnt-logo-lottie-main.json') }} // the path to the animation json
         });
     });
 </script>
