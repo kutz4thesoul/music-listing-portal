@@ -20,6 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
         integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -44,5 +45,15 @@
 
     
 </body>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var animation = lottie.loadAnimation({
+            container: document.getElementById('lottie-animation'), // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '{{ asset('lottie/tnt-logo-lottie-main.json') }}' // the path to the animation json
+        });
+    });
+</script>
 </html>
