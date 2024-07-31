@@ -5,9 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('images/TnT_reel.png') }}" alt="Logo" width="50px">
-                    </a>
+
+                    <div id="lottie-animation" style="width: 100px; height: 100px;"></div>
                 </div>
 
                 <!-- Navigation Links -->

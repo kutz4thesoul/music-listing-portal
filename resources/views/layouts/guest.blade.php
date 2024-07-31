@@ -18,7 +18,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
                 <a href="/">
-                    <img src="{{ asset('images/TnT_logo.png') }}" alt="Logo" width="280px">
+                    <div id="lottie-animation" style="width: 100px; height: 100px;"></div>
                 </a>
             </div>
 
