@@ -45,15 +45,5 @@
 
     
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var animation = lottie.loadAnimation({
-            container: document.getElementById('lottie-animation'), // the dom element that will contain the animation
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: {{ asset('lottie/tnt-logo-lottie-main.json') }} // the path to the animation json
-        });
-    });
-</script>
+
 </html>
