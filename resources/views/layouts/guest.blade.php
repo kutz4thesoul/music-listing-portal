@@ -19,7 +19,7 @@
             <div>
                 <a href="/">
                     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://lottie.host/6f4ee854-3625-4849-8985-e423a0752949/hZWZsrb0zk.json" background="transparent" speed="1" style="width: 300px; height: 300px" direction="1" mode="normal" loop controls autoplay></lottie-player>
+<lottie-player src="https://lottie.host/6f4ee854-3625-4849-8985-e423a0752949/hZWZsrb0zk.json" background="transparent" speed="1" style="width: 300px; height: 300px" direction="1" mode="normal" loop autoplay></lottie-player>
                 </a>
             </div>
 
