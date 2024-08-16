@@ -19,11 +19,12 @@
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
         <div>
-            <a href="/">
+            {{-- <a href="/">
                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                 <lottie-player src="{{ asset('lottie/tnt-logo-lottie-main.json') }}" background="transparent"
                     speed="1" direction="1" mode="normal" loop autoplay></lottie-player>
-            </a>
+            </a> --}}
+            <img src="{{ asset('images/TnT_logo.png') }}" alt="TNT Logo" class="mx-auto" />
         </div>
 
         <div
