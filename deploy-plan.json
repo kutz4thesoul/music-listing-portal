@@ -9,7 +9,9 @@
         "name": "uadevelopment/php",
         "tag": "8.2-latest",
         "databases": ["oracle"],
-        "os_modules": [],
+        "os_modules": [
+            "php82-pdo_sqlite"
+        ],
         "php_extensions": [],
         "max_file_size": "20",
         "timeout": "60"
