@@ -16,6 +16,7 @@ USER root
 #Install OS Modules
 RUN apk -U upgrade \
 	&& apk --no-cache add \
+	php82-pdo_sqlite \
 	nodejs \
 	npm
 	
