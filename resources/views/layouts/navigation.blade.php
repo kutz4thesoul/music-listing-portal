@@ -4,13 +4,13 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                {{-- <div class="shrink-0 flex items-center">
+                <div class="shrink-0 flex items-center">
                     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                     <lottie-player src="{{ asset('lottie/tnt-logo-lottie-main.json') }}" background="transparent"
                         speed="1" direction="1" mode="normal" loop autoplay></lottie-player>
-                </div> --}}
+                </div>
 
-                <img src="{{ asset('images/TnT_logo.png') }}" alt="TNT Logo" class="" />
+                {{-- <img src="{{ asset('images/TnT_logo.png') }}" alt="TNT Logo" class="" /> --}}
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
